@@ -18,7 +18,7 @@ public class JedisConnectionFactory {
         poolConfig.setMinIdle(0);
         //等待时常
         poolConfig.setMaxWaitMillis(100000);
-        jedisPool = new JedisPool(poolConfig, "192.168.10.100", 6379, 1000, "123321");
+        jedisPool = new JedisPool(poolConfig, "192.168.152.128", 6379, 1000, "123456");
 
     }
 

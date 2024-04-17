@@ -31,11 +31,19 @@ class SpringdataStringRedisApplicationTests {
         String json = objectMapper.writeValueAsString(user);
         stringRedisTemplate.opsForValue().set("user:6", json);
         String jsonUser = stringRedisTemplate.opsForValue().get("user:6");
+        System.out.println("jsonUser = " + jsonUser);
         //手动反序列化
         User user1 = objectMapper.readValue(jsonUser, User.class);
         System.out.println("user1 " + user1);
     }
-
+    /**
+     *  redisTemplate 的序列化实践方案二
+     *  1.使用StringRedisTemplate
+     *  2.写入redis时，手动把对象序列化为json
+     *  3.读取redis时，手动把读取到的json反序列化为对象
+     *
+     *  目的：解决方案一的缺点
+     */
     @Test
     public void testHash() {
         stringRedisTemplate.opsForHash().put("user:7", "name", "爆米花");
